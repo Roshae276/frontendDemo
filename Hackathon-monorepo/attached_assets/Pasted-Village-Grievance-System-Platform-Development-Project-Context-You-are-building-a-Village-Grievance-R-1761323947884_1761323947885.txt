@@ -1,0 +1,1349 @@
+Village Grievance System Platform Development
+Project Context
+You are building a Village Grievance Redressal System - a blockchain-integrated, community-verified platform that addresses the critical issue of false grievance closures in rural India. This system empowers communities through transparent verification mechanisms and prevents officials from tampering with or falsely closing complaints.
+
+Core Mission Statement
+Create a formal, accessible, and trustworthy government-style web platform that enables rural citizens to submit grievances through multiple channels (web, voice, SMS, WhatsApp) and allows community members to verify resolutions, ensuring accountability through blockchain transparency.
+
+Design Requirements
+1. Visual Identity & Color Scheme
+Primary Color Palette (Government-aligned, Rural-friendly):
+
+Primary Blue: #1C4587 (Trust, Government authority)
+Secondary Orange: #F4511E (Action, Energy - represents Indian government branding)
+Success Green: #2E7D32 (Resolution, Positive outcomes)
+Warning Amber: #F57C00 (Pending verification, Attention needed)
+Alert Red: #C62828 (Disputed, Overdue grievances)
+Neutral Background: #F5F5F5 (Clean, accessible)
+Text Primary: #212121 (High readability)
+Text Secondary: #757575 (Supporting information)
+
+Accessibility Considerations:
+
+High contrast ratios (WCAG AAA compliant)
+Large, readable fonts (minimum 16px for body text)
+Clear visual hierarchy
+Icons with text labels (for low-literacy users)
+
+
+2. Platform Architecture & User Interface Components
+A. Grievance Submission Form (Core Interface)
+Create a step-by-step, intuitive form with the following sections:
+Section 1: Problem Identification
+┌─────────────────────────────────────────────┐
+│  Problem Title *                             │
+│  ┌─────────────────────────────────────────┐ │
+│  │ [Enter brief problem description]       │ │
+│  └─────────────────────────────────────────┘ │
+│                                              │
+│  Category * (Dropdown)                       │
+│  ┌─────────────────────────────────────────┐ │
+│  │ ▼ Select Problem Type                   │ │
+│  └─────────────────────────────────────────┘ │
+│  Options:                                    │
+│  • Water Supply                              │
+│  • Road & Infrastructure                     │
+│  • Electricity                               │
+│  • Sanitation & Waste Management            │
+│  • Healthcare                                │
+│  • Education                                 │
+│  • Agriculture Support                       │
+│  • Social Welfare Schemes                    │
+│  • Other                                     │
+└─────────────────────────────────────────────┘
+```
+
+**Section 2: Evidence Upload**
+```
+┌─────────────────────────────────────────────┐
+│  Upload Photo/Video Evidence                 │
+│  ┌─────────────────────────────────────────┐ │
+│  │  📷  📹                                  │ │
+│  │  [Drag & Drop or Click to Upload]       │ │
+│  │  Supported: JPG, PNG, MP4 (Max 150MB)   │ │
+│  └─────────────────────────────────────────┘ │
+│  [Preview uploaded files here]               │
+└─────────────────────────────────────────────┘
+```
+
+**Section 3: Detailed Description**
+```
+┌─────────────────────────────────────────────┐
+│  Problem Description *                       │
+│  ┌─────────────────────────────────────────┐ │
+│  │                                          │ │
+│  │  Describe your problem in detail...     │ │
+│  │  (Minimum 50 characters)                │ │
+│  │                                          │ │
+│  │                                          │ │
+│  └─────────────────────────────────────────┘ │
+│  Character count: 0/5000                     │
+│                                              │
+│  🎤 Voice Recording (Alternative Input)      │
+│  ┌─────────────────────────────────────────┐ │
+│  │  ⏺️ Start Recording  │  ⏹️ Stop  │ ▶️ Play │ │
+│  └─────────────────────────────────────────┘ │
+│  Recording time: 00:00 / 03:00 max          │
+│  📝 Voice will be auto-transcribed          │
+└─────────────────────────────────────────────┘
+```
+
+**Section 4: Location & Contact Information**
+```
+┌─────────────────────────────────────────────┐
+│  Village Name *                              │
+│  ┌─────────────────────────────────────────┐ │
+│  │ [Enter your village name]               │ │
+│  └─────────────────────────────────────────┘ │
+│                                              │
+│  Your Name *                                 │
+│  ┌─────────────────────────────────────────┐ │
+│  │ [Full name as per Aadhaar]              │ │
+│  └─────────────────────────────────────────┘ │
+│                                              │
+│  Mobile Number *                             │
+│  ┌─────────────────────────────────────────┐ │
+│  │ +91 [10-digit mobile number]            │ │
+│  └─────────────────────────────────────────┘ │
+│  📱 You'll receive SMS updates              │
+│                                              │
+│  Email Address (Optional)                    │
+│  ┌─────────────────────────────────────────┐ │
+│  │ [your.email@example.com]                │ │
+│  └─────────────────────────────────────────┘ │
+│                                              │
+│  [✓] I confirm the information is accurate   │
+│                                              │
+│  [  Submit Grievance  ]  [  Reset Form  ]   │
+└─────────────────────────────────────────────┘
+```
+
+---
+
+#### **B. Dashboard Interfaces**
+
+**1. User Dashboard**
+```
+┌──────────────────────────────────────────────────────────┐
+│  📊 My Grievances                                         │
+│  ┌────────────────────────────────────────────────────┐  │
+│  │ Status Filter: [All] [Pending] [Overdue]           │  │
+│  │              [Pending Verification] [Verified]      │  │
+│  └────────────────────────────────────────────────────┘  │
+│                                                           │
+│  ┌─────────────────────────────────────────────────────┐ │
+│  │ 🟡 OVERDUE (#GR2025001)                             │ │
+│  │ Road Repair Needed - Main Village Road              │ │
+│  │ Submitted: Jan 15, 2025 | Due: Feb 14, 2025        │ │
+│  │ Days Overdue: 7 | Assigned: Panchayat Office       │ │
+│  │ [View Details] [Auto-Escalated to District]        │ │
+│  └─────────────────────────────────────────────────────┘ │
+│                                                           │
+│  ┌─────────────────────────────────────────────────────┐ │
+│  │ 🟠 PENDING VERIFICATION (#GR2025002)                │ │
+│  │ Water Supply Issue - Well Pump Not Working          │ │
+│  │ Marked Resolved: Feb 18, 2025                       │ │
+│  │ Community Verification: ⏱️ 5 days remaining         │ │
+│  │ [View Resolution] [Verify/Dispute]                  │ │
+│  └─────────────────────────────────────────────────────┘ │
+└──────────────────────────────────────────────────────────┘
+```
+
+**2. Official Dashboard**
+```
+┌──────────────────────────────────────────────────────────┐
+│  👔 Assigned Grievances (Panchayat Officer)               │
+│  ┌────────────────────────────────────────────────────┐  │
+│  │ New Assignments: 3 | In Progress: 5 | Overdue: 2  │  │
+│  └────────────────────────────────────────────────────┘  │
+│                                                           │
+│  ┌─────────────────────────────────────────────────────┐ │
+│  │ 🔴 NEW ASSIGNMENT (#GR2025003)                      │ │
+│  │ Electricity Power Cut - Daily 4 Hours               │ │
+│  │ Village: Rampur | Submitted: Feb 20, 2025          │ │
+│  │ Category: Electricity | Priority: High              │ │
+│  │                                                      │ │
+│  │ Set Resolution Timeline:                            │ │
+│  │ ┌──────────────────────────────────────┐           │ │
+│  │ │ ▼ Select Days (Max 30)              │           │ │
+│  │ └──────────────────────────────────────┘           │ │
+│  │ Options: 7 days | 15 days | 30 days                │ │
+│  │                                                      │ │
+│  │ [✓ Accept Task] [View Full Details]                │ │
+│  └─────────────────────────────────────────────────────┘ │
+│                                                           │
+│  ┌─────────────────────────────────────────────────────┐ │
+│  │ 🟢 IN PROGRESS (#GR2025001)                         │ │
+│  │ Road Repair - Main Village Road                     │ │
+│  │ Deadline: Feb 25, 2025 (5 days left)                │ │
+│  │ Progress: ██████░░░░ 60%                            │ │
+│  │                                                      │ │
+│  │ Upload Resolution Evidence:                         │ │
+│  │ [📷 Upload Photos] [Add Comments]                   │ │
+│  │ [✓ Mark as Resolved]                                │ │
+│  └─────────────────────────────────────────────────────┘ │
+└──────────────────────────────────────────────────────────┘
+```
+
+**3. Community Verification Dashboard (Public)**
+```
+┌──────────────────────────────────────────────────────────┐
+│  👥 Community Verification Center                         │
+│  Help verify resolved grievances in your area             │
+│  ┌────────────────────────────────────────────────────┐  │
+│  │ Village: [All Villages ▼] | Active: 12 grievances │  │
+│  └────────────────────────────────────────────────────┘  │
+│                                                           │
+│  ┌─────────────────────────────────────────────────────┐ │
+│  │ ⏱️ PENDING VERIFICATION (#GR2025002)                 │ │
+│  │ Water Supply Restored - Well Pump Repaired          │ │
+│  │ Village: Rampur | Resolved On: Feb 18, 2025        │ │
+│  │ Verification Window: ⏰ 5 days, 14 hours left       │ │
+│  │                                                      │ │
+│  │ Official's Resolution Photos:                       │ │
+│  │ [🖼️ Photo 1] [🖼️ Photo 2] [🖼️ Photo 3]             │ │
+│  │                                                      │ │
+│  │ Community Votes: ✓ 23 Verified | ✗ 2 Disputed      │ │
+│  │                                                      │ │
+│  │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │ │
+│  │                                                      │ │
+│  │ 👤 Original Reporter Status:                        │ │
+│  │ User Response: [👍 Satisfied] [👎 Not Satisfied]   │ │
+│  │ Status: ⏳ Awaiting user response (Day 2 of 4)     │ │
+│  │                                                      │ │
+│  │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │ │
+│  │                                                      │ │
+│  │ 👥 Community Verification:                          │ │
+│  │ Other villagers can verify this resolution:         │ │
+│  │ [👍 Agree - Problem Fixed] [👎 Dispute - Not Fixed]│ │
+│  │                                                      │ │
+│  │ 📊 Verification Progress:                           │ │
+│  │ • 23 community members agreed (✓ Verified)         │ │
+│  │ • 2 community members disputed (✗ Not Fixed)       │ │
+│  │ • Minimum threshold: 3-5 verifications needed      │ │
+│  │                                                      │ │
+│  │ If disputing, upload current evidence:              │ │
+│  │ [📷 Upload New Photos/Videos (Max 150MB)]          │ │
+│  │                                                      │ │
+│  │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │ │
+│  │                                                      │ │
+│  │ ⚖️ Verification Logic:                              │ │
+│  │ • If USER agrees → ✅ Case closed (No community    │ │
+│  │   verification needed)                              │ │
+│  │ • If USER inactive for 3-4 days → Community votes  │ │
+│  │   activate (3-5 members needed)                     │ │
+│  │ • If USER or COMMUNITY disputes → 🚨 Escalate to   │ │
+│  │   Admin/Higher Authority immediately                │ │
+│  │ • If NO response (user + community) for 15 days    │ │
+│  │   → ✅ Auto-closed as resolved                      │ │
+│  └─────────────────────────────────────────────────────┘ │
+└──────────────────────────────────────────────────────────┘
+```
+
+**4. Escalation & Authority Management System**
+```
+┌──────────────────────────────────────────────────────────┐
+│  🔺 Grievance Escalation Tracking System                  │
+│  ┌────────────────────────────────────────────────────┐  │
+│  │ Grievance #GR2025004 - Electricity Issue           │  │
+│  │ Current Level: Panchayat Officer                   │  │
+│  │ ⏰ Overdue Timer: 8 days remaining                 │  │
+│  └────────────────────────────────────────────────────┘  │
+│                                                           │
+│  📋 Authority Hierarchy & Actions:                        │
+│  ┌─────────────────────────────────────────────────────┐ │
+│  │ Level 1: Panchayat Officer                          │ │
+│  │ ┌───────────────────────────────────────────────┐  │ │
+│  │ │ Status: In Progress                            │  │ │
+│  │ │ Timer: 10-day deadline (8 days left)           │  │ │
+│  │ │                                                 │  │ │
+│  │ │ Officer Actions:                               │  │ │
+│  │ │ [✅ Can Resolve] [❌ Cannot Resolve]           │  │ │
+│  │ │                                                 │  │ │
+│  │ │ If "Cannot Resolve":                           │  │ │
+│  │ │ Reason for Escalation: *                       │  │ │
+│  │ │ ┌─────────────────────────────────────────┐   │  │ │
+│  │ │ │ Enter detailed reason (min 100 chars)   │   │  │ │
+│  │ │ │ Why cannot resolve? Resources needed?   │   │  │ │
+│  │ │ └─────────────────────────────────────────┘   │  │ │
+│  │ │ [Submit & Escalate to Block Level]            │  │ │
+│  │ │                                                 │  │ │
+│  │ │ ⚠️ If Ignored/No Action after 10 days:         │  │ │
+│  │ │ → 🚨 AUTO-ESCALATE to next authority           │  │ │
+│  │ │ → 📝 Officer must provide explanation to admin │  │ │
+│  │ └───────────────────────────────────────────────┘  │ │
+│  └─────────────────────────────────────────────────────┘ │
+│                                                           │
+│  ┌─────────────────────────────────────────────────────┐ │
+│  │ Level 2: Block Development Officer (BDO)           │ │
+│  │ ┌───────────────────────────────────────────────┐  │ │
+│  │ │ Status: Escalated from Panchayat               │  │ │
+│  │ │ Timer: 10-day deadline (Fresh timer starts)    │  │ │
+│  │ │                                                 │  │ │
+│  │ │ Previous Officer Reason:                       │  │ │
+│  │ │ "Requires budget approval beyond authority"   │  │ │
+│  │ │                                                 │  │ │
+│  │ │ BDO Actions:                                   │  │ │
+│  │ │ [✅ Can Resolve] [❌ Cannot Resolve]           │  │ │
+│  │ │                                                 │  │ │
+│  │ │ If "Cannot Resolve" - Provide Reason:          │  │ │
+│  │ │ [Submit & Escalate to District Level]          │  │ │
+│  │ │                                                 │  │ │
+│  │ │ ⚠️ If Ignored after 10 days:                   │  │ │
+│  │ │ → AUTO-ESCALATE to District Collector          │  │ │
+│  │ └───────────────────────────────────────────────┘  │ │
+│  └─────────────────────────────────────────────────────┘ │
+│                                                           │
+│  ┌─────────────────────────────────────────────────────┐ │
+│  │ Level 3: District Collector/Admin                  │ │
+│  │ ┌───────────────────────────────────────────────┐  │ │
+│  │ │ Status: Escalated from Block Level             │  │ │
+│  │ │ Timer: 10-day deadline (Fresh timer starts)    │  │ │
+│  │ │                                                 │  │ │
+│  │ │ Escalation History:                            │  │ │
+│  │ │ • Panchayat: Budget constraint                 │  │ │
+│  │ │ • Block: Requires state-level approval         │  │ │
+│  │ │                                                 │  │ │
+│  │ │ Admin Actions:                                 │  │ │
+│  │ │ [✅ Can Resolve] [❌ Escalate to State Level]  │  │ │
+│  │ │                                                 │  │ │
+│  │ │ If escalating further - Justification:         │  │ │
+│  │ │ [Submit to State/Divisional Commissioner]      │  │ │
+│  │ │                                                 │  │ │
+│  │ │ ⚠️ If Ignored after 10 days:                   │  │ │
+│  │ │ → AUTO-ESCALATE to highest authority           │  │ │
+│  │ │ → Generate compliance report                   │  │ │
+│  │ └───────────────────────────────────────────────┘  │ │
+│  └─────────────────────────────────────────────────────┘ │
+│                                                           │
+│  🔄 Escalation Rules Summary:                             │
+│  • Each level gets 10-day timer upon assignment          │
+│  • Officer MUST choose: Resolve OR Escalate with reason  │
+│  • Ignored grievances AUTO-ESCALATE after 10 days        │
+│  • Blockchain records all actions & timestamps           │
+│  • Officers accountable for delays/inaction              │
+└──────────────────────────────────────────────────────────┘
+```
+
+**5. Admin Oversight Dashboard**
+```
+┌──────────────────────────────────────────────────────────┐
+│  🛡️ Administrative Control Panel                         │
+│  [Password Protected: admin.html]                        │
+│  ┌────────────────────────────────────────────────────┐  │
+│  │ System Overview                                    │  │
+│  │ Total Grievances: 1,247 | Active: 156             │  │
+│  │ Resolution Rate: 87.3% | Avg Time: 12 days        │  │
+│  └────────────────────────────────────────────────────┘  │
+│                                                           │
+│  ⚠️ DISPUTED GRIEVANCES (Requires Escalation)            │
+│  ┌─────────────────────────────────────────────────────┐ │
+│  │ #GR2025005 - Road Repair (3 disputes)              │ │
+│  │ Rampur Village | Officer: Sharma                    │ │
+│  │ [View Dispute Evidence] [Escalate to District]     │ │
+│  └─────────────────────────────────────────────────────┘ │
+│                                                           │
+│  🔴 OVERDUE GRIEVANCES (Auto-Escalation Triggered)        │
+│  ┌─────────────────────────────────────────────────────┐ │
+│  │ #GR2025001 - Electricity (14 days overdue)         │ │
+│  │ Sonpur Village | Officer: Kumar                     │ │
+│  │ [Review Case] [Reassign] [Escalate]                │ │
+│  └─────────────────────────────────────────────────────┘ │
+└──────────────────────────────────────────────────────────┘
+
+3. Technical Implementation Requirements
+Frontend Architecture (PWA)
+Tech Stack:
+
+HTML5 (Semantic markup for accessibility)
+CSS3 (Flexbox/Grid for responsive design)
+Vanilla JavaScript (ES6+)
+Bootstrap 5 (for responsive components)
+Service Workers (for offline functionality)
+
+Key Features to Implement:
+
+Progressive Web App (PWA) Configuration
+
+javascript// manifest.json
+{
+  "name": "Village Grievance System",
+  "short_name": "VGS",
+  "description": "Submit and track village grievances",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1C4587",
+  "theme_color": "#1C4587",
+  "icons": [...]
+}
+
+Voice Recording Implementation
+
+javascript// Voice recording with Web Audio API
+const mediaRecorder = new MediaRecorder(stream);
+// Auto-transcription integration with Web Speech API
+const recognition = new webkitSpeechRecognition();
+recognition.lang = 'hi-IN'; // Hindi support
+
+Offline-First Architecture
+
+javascript// Service Worker for offline data sync
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request);
+    })
+  );
+});
+
+API Integration Points
+
+javascript// Grievance submission
+fetch('/api/grievance/submit', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    title, category, description, audioUrl,
+    photos, villageName, name, email, mobile
+  })
+});
+
+// Community verification with voting system
+fetch('/api/grievance/community-vote/:id', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    userId: 'community_member_123',
+    voteType: 'agree', // or 'dispute'
+    evidenceFiles: [] // if disputing
+  })
+});
+
+// User satisfaction response
+fetch('/api/grievance/user-response/:id', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    userId: 'original_reporter_456',
+    satisfied: true // or false
+  })
+});
+
+// Official escalation with reason
+fetch('/api/grievance/escalate/:id', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    officialId: 'panchayat_officer_789',
+    canResolve: false,
+    escalationReason: 'Requires budget approval beyond my authority',
+    nextLevel: 'block_development_officer'
+  })
+});
+
+4. User Experience Enhancements
+Accessibility Features:
+
+🎤 Voice input for low-literacy users
+🔊 Text-to-speech for reading grievance status
+📱 SMS notifications for every status change
+🌐 Multi-language support (Hindi, regional languages)
+📶 Offline mode with auto-sync when online
+🖼️ Visual icons with text labels
+
+Trust & Transparency Indicators:
+
+Blockchain transaction IDs visible on verified grievances
+Real-time timer countdowns (7-day verification window, 10-day escalation timer)
+Public vote counters on community dashboard
+Auto-escalation badges (system-triggered, not manual)
+Escalation history trail showing all previous authority levels
+
+Advanced Verification Logic:
+
+Separate voting interfaces for original reporter (user ID) and community members (different IDs)
+User satisfaction takes priority - if user agrees, case closes immediately
+Community verification activates only if user inactive for 3-4 days
+Minimum 3-5 community member verifications required for closure without user
+Any dispute (user OR community) triggers immediate escalation
+15-day auto-closure if both user and community remain inactive post-resolution
+
+
+5. Design Patterns & Components
+Button Styles:
+css.btn-primary { background: #1C4587; } /* Government actions */
+.btn-success { background: #2E7D32; } /* Verify/Confirm */
+.btn-warning { background: #F57C00; } /* Pending actions */
+.btn-danger { background: #C62828; } /* Dispute/Cancel */
+.btn-agree { background: #4CAF50; } /* 👍 Agree */
+.btn-dispute { background: #FF5722; } /* 👎 Dispute */
+Status Badges:
+
+🔵 Pending (Blue) - #1976D2
+🟠 Pending Verification (Orange) - #F57C00
+🟢 Verified (Green) - #2E7D32
+🔴 Overdue/Disputed (Red) - #C62828
+🟡 Escalated (Amber) - #FFC107
+⚪ Closed (Grey) - #9E9E9E
+
+Timer Components:
+html<div class="timer-component">
+  <span class="timer-icon">⏰</span>
+  <span class="timer-text">8 days remaining</span>
+  <div class="timer-progress-bar">
+    <div class="progress" style="width: 20%"></div>
+  </div>
+</div>
+Voting System UI:
+html<div class="voting-section">
+  <h4>Community Verification</h4>
+  <div class="vote-buttons">
+    <button class="btn-agree">
+      <span class="icon">👍</span>
+      Agree - Problem Fixed
+      <span class="count">(23)</span>
+    </button>
+    <button class="btn-dispute">
+      <span class="icon">👎</span>
+      Dispute - Not Fixed
+      <span class="count">(2)</span>
+    </button>
+  </div>
+  <div class="vote-threshold">
+    <p>✓ Threshold met: 3/5 verifications required</p>
+  </div>
+</div>
+Escalation Reason Form:
+html<div class="escalation-form">
+  <h4>Cannot Resolve - Provide Justification</h4>
+  <textarea 
+    id="escalation-reason" 
+    minlength="100" 
+    maxlength="2000"
+    placeholder="Explain why this grievance requires escalation (min 100 characters)">
+  </textarea>
+  <div class="char-count">0/2000</div>
+  <button class="btn-warning">Submit & Escalate to Next Level</button>
+</div>
+Card Layout Pattern:
+html<div class="grievance-card">
+  <div class="card-header">
+    <span class="status-badge">STATUS</span>
+    <span class="grievance-id">#GR2025001</span>
+  </div>
+  <div class="card-body">
+    <h3 class="grievance-title">...</h3>
+    <p class="grievance-meta">...</p>
+    <div class="timer">⏱️ Time remaining: ...</div>
+    <div class="authority-level">📍 Current Level: Panchayat Officer</div>
+  </div>
+  <div class="card-actions">
+    <button>Primary Action</button>
+  </div>
+</div>
+
+6. Blockchain Integration (Frontend Display)
+Show Blockchain Transparency:
+html<div class="blockchain-proof">
+  <h4>🔗 Blockchain Verification</h4>
+  <p>Transaction Hash: <code>0x7d2f...</code></p>
+  <p>Block Number: 15,234,567</p>
+  <a href="etherscan.io/tx/..." target="_blank">
+    View on Blockchain Explorer
+  </a>
+  <div class="escalation-trail">
+    <h5>Escalation History (Immutable):</h5>
+    <ul>
+      <li>Level 1: Panchayat Officer → Escalated (Day 10)</li>
+      <li>Level 2: Block Officer → Escalated (Day 10)</li>
+      <li>Level 3: District Admin → In Progress (Day 5)</li>
+    </ul>
+  </divRetryClaude does not have the ability to run the code it generates yet.PContinue </div>
+````
+
+7. Advanced Verification & Escalation Logic
+A. User vs Community Verification System
+Implementation Logic:
+javascript// Verification State Management
+const verificationLogic = {
+  userResponse: null, // 'satisfied' | 'not_satisfied' | null
+  communityVotes: {
+    agree: 0,
+    dispute: 0,
+    voters: [] // Array of unique user IDs
+  },
+  userInactiveDays: 0,
+  resolutionDate: new Date(),
+  autoCloseDate: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000) // 15 days
+};
+
+// Priority Decision Tree
+function checkVerificationStatus(grievanceId) {
+  // PRIORITY 1: User Response
+  if (verificationLogic.userResponse === 'satisfied') {
+    return {
+      status: 'CLOSED',
+      reason: 'User confirmed resolution',
+      action: 'close_case'
+    };
+  }
+  
+  if (verificationLogic.userResponse === 'not_satisfied') {
+    return {
+      status: 'ESCALATED',
+      reason: 'User disputed resolution',
+      action: 'escalate_to_admin'
+    };
+  }
+  
+  // PRIORITY 2: User Inactive (3-4 days) → Community Takes Over
+  if (verificationLogic.userInactiveDays >= 3) {
+    // Check community threshold (3-5 verifications)
+    if (verificationLogic.communityVotes.agree >= 3) {
+      return {
+        status: 'CLOSED',
+        reason: 'Community verified (user inactive)',
+        action: 'close_case'
+      };
+    }
+    
+    if (verificationLogic.communityVotes.dispute >= 1) {
+      return {
+        status: 'ESCALATED',
+        reason: 'Community disputed resolution',
+        action: 'escalate_to_admin'
+      };
+    }
+  }
+  
+  // PRIORITY 3: 15-Day Auto-Close
+  const daysSinceResolution = Math.floor(
+    (Date.now() - verificationLogic.resolutionDate) / (1000 * 60 * 60 * 24)
+  );
+  
+  if (daysSinceResolution >= 15) {
+    return {
+      status: 'AUTO_CLOSED',
+      reason: 'No response from user or community for 15 days',
+      action: 'close_case'
+    };
+  }
+  
+  // Default: Still in verification window
+  return {
+    status: 'PENDING_VERIFICATION',
+    reason: `Awaiting response (Day ${daysSinceResolution} of 15)`,
+    action: 'wait'
+  };
+}
+API Endpoints for Verification:
+javascript// User Satisfaction Response
+POST /api/grievance/user-satisfaction/:id
+{
+  "userId": "original_reporter_unique_id",
+  "satisfied": true, // or false
+  "additionalComments": "Problem fully resolved, thank you",
+  "timestamp": "2025-02-20T10:30:00Z"
+}
+
+// Community Member Vote
+POST /api/grievance/community-vote/:id
+{
+  "communityMemberId": "community_member_unique_id",
+  "voteType": "agree", // or "dispute"
+  "villageName": "Rampur",
+  "evidenceFiles": [], // Required if voteType is "dispute"
+  "comments": "Verified - pump is working properly",
+  "timestamp": "2025-02-20T11:15:00Z"
+}
+
+// Check Verification Status (Called by cron job)
+GET /api/grievance/verification-status/:id
+Response: {
+  "grievanceId": "GR2025002",
+  "currentStatus": "PENDING_VERIFICATION",
+  "userResponse": null,
+  "userInactiveDays": 2,
+  "communityVotes": { "agree": 23, "dispute": 2 },
+  "daysUntilAutoClose": 13,
+  "nextAction": "wait"
+}
+
+B. Multi-Level Escalation System with Accountability
+Authority Hierarchy Structure:
+javascriptconst authorityHierarchy = [
+  {
+    level: 1,
+    title: "Panchayat Officer",
+    maxResolutionDays: 30,
+    overdueTimerDays: 10,
+    canEscalateTo: "Block Development Officer"
+  },
+  {
+    level: 2,
+    title: "Block Development Officer (BDO)",
+    maxResolutionDays: 30,
+    overdueTimerDays: 10,
+    canEscalateTo: "District Collector"
+  },
+  {
+    level: 3,
+    title: "District Collector/Admin",
+    maxResolutionDays: 30,
+    overdueTimerDays: 10,
+    canEscalateTo: "Divisional Commissioner"
+  },
+  {
+    level: 4,
+    title: "Divisional Commissioner",
+    maxResolutionDays: 30,
+    overdueTimerDays: 10,
+    canEscalateTo: "State Secretary"
+  },
+  {
+    level: 5,
+    title: "State Secretary (Highest)",
+    maxResolutionDays: 30,
+    overdueTimerDays: 10,
+    canEscalateTo: null // Terminal authority
+  }
+];
+Escalation Workflow Implementation:
+javascript// Official Decision on Grievance
+POST /api/grievance/official-decision/:id
+{
+  "officialId": "panchayat_officer_123",
+  "grievanceId": "GR2025003",
+  "decision": "cannot_resolve", // or "can_resolve"
+  "escalationReason": "Requires budget approval of Rs. 5,00,000 which exceeds my sanctioned limit of Rs. 50,000. Technical expertise for electrical transformer repair needed from state electricity board.",
+  "estimatedBudget": 500000,
+  "requiredResources": [
+    "State Electricity Board technical team",
+    "Budget approval from District Collector",
+    "3-phase transformer unit"
+  ],
+  "currentLevel": 1,
+  "escalateToLevel": 2,
+  "timestamp": "2025-02-20T14:00:00Z"
+}
+
+// Auto-Escalation Trigger (Cron Job - Runs Daily)
+POST /api/grievance/auto-escalate/:id
+{
+  "grievanceId": "GR2025004",
+  "triggerReason": "overdue_10_days",
+  "currentLevel": 1,
+  "officialId": "panchayat_officer_456",
+  "autoEscalateToLevel": 2,
+  "notificationSent": {
+    "toOfficial": true, // Notify current officer of escalation
+    "toNextAuthority": true, // Notify next level officer
+    "toAdmin": true, // Notify system admin
+    "toUser": true // Notify original grievance reporter
+  },
+  "complianceReportGenerated": true,
+  "blockchainRecorded": true
+}
+
+// Official Explanation for Missed Deadline
+POST /api/grievance/missed-deadline-explanation/:id
+{
+  "officialId": "panchayat_officer_456",
+  "grievanceId": "GR2025004",
+  "explanation": "I was on official medical leave from Feb 10-20. The grievance requires site inspection which couldn't be delegated. Request extension or reassignment.",
+  "supportingDocuments": ["medical_certificate.pdf"],
+  "requestExtension": true,
+  "extensionDays": 7,
+  "submittedToAdmin": true
+}
+Escalation Dashboard Component:
+html<div class="escalation-tracker">
+  <h3>Grievance #GR2025003 - Escalation Timeline</h3>
+  
+  <!-- Level 1: Panchayat Officer -->
+  <div class="escalation-level completed">
+    <div class="level-header">
+      <span class="level-badge">Level 1</span>
+      <h4>Panchayat Officer</h4>
+      <span class="status-icon">✓ Escalated</span>
+    </div>
+    <div class="level-details">
+      <p><strong>Officer:</strong> Rajesh Kumar (ID: PKT001)</p>
+      <p><strong>Action:</strong> Cannot Resolve</p>
+      <p><strong>Reason:</strong> Budget constraint - requires Rs. 5,00,000</p>
+      <p><strong>Timeline:</strong> Jan 15 - Jan 25 (10 days)</p>
+      <p><strong>Escalated On:</strong> Jan 25, 2025</p>
+      <div class="blockchain-link">
+        <a href="#">🔗 View on Blockchain</a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Level 2: Block Officer -->
+  <div class="escalation-level active">
+    <div class="level-header">
+      <span class="level-badge">Level 2</span>
+      <h4>Block Development Officer</h4>
+      <span class="status-icon">⏳ In Progress</span>
+    </div>
+    <div class="level-details">
+      <p><strong>Officer:</strong> Priya Sharma (ID: BDO012)</p>
+      <p><strong>Assigned:</strong> Jan 25, 2025</p>
+      <p><strong>Deadline:</strong> Feb 4, 2025</p>
+      <div class="timer-display">
+        <span class="timer-icon">⏰</span>
+        <span class="timer-text">6 days, 14 hours remaining</span>
+        <div class="progress-bar">
+          <div class="progress" style="width: 40%; background: #4CAF50;"></div>
+        </div>
+      </div>
+      <p><strong>Previous Context:</strong> Escalated due to budget approval needed</p>
+      <div class="action-buttons">
+        <button class="btn-success">✓ Can Resolve</button>
+        <button class="btn-warning">⚠️ Cannot Resolve</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Level 3: District Collector (Not yet reached) -->
+  <div class="escalation-level pending">
+    <div class="level-header">
+      <span class="level-badge">Level 3</span>
+      <h4>District Collector</h4>
+      <span class="status-icon">⏸️ Pending</span>
+    </div>
+    <div class="level-details">
+      <p class="muted-text">Will be activated if Level 2 escalates or deadline passes</p>
+    </div>
+  </div>
+  
+  <!-- Escalation Statistics -->
+  <div class="escalation-stats">
+    <h4>📊 Escalation Metrics:</h4>
+    <ul>
+      <li>Total Time Elapsed: 13 days</li>
+      <li>Levels Traversed: 1 → 2</li>
+      <li>Auto-Escalations: 0</li>
+      <li>Manual Escalations: 1</li>
+      <li>Blockchain Records: 2 transactions</li>
+    </ul>
+  </div>
+</div>
+
+8. Enhanced File Upload System
+Updated Upload Specifications:
+javascript// File Upload Configuration
+const uploadConfig = {
+  maxFileSize: 150 * 1024 * 1024, // 150MB in bytes
+  allowedFormats: {
+    images: ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'],
+    videos: ['video/mp4', 'video/avi', 'video/mov', 'video/mkv'],
+    documents: ['application/pdf'] // Optional for evidence
+  },
+  maxFiles: 10, // Maximum 10 files per upload
+  compressionEnabled: true // Auto-compress large files
+};
+
+// File Upload Function
+async function uploadEvidence(files, grievanceId) {
+  const formData = new FormData();
+  
+  for (let file of files) {
+    // Validate file size
+    if (file.size > uploadConfig.maxFileSize) {
+      return {
+        error: true,
+        message: `File "${file.name}" exceeds 150MB limit`
+      };
+    }
+    
+    // Validate file type
+    const fileType = file.type;
+    const isValidType = Object.values(uploadConfig.allowedFormats)
+      .flat()
+      .includes(fileType);
+    
+    if (!isValidType) {
+      return {
+        error: true,
+        message: `File type "${fileType}" not supported`
+      };
+    }
+    
+    formData.append('files', file);
+  }
+  
+  formData.append('grievanceId', grievanceId);
+  formData.append('uploadType', 'evidence');
+  
+  try {
+    const response = await fetch('/api/grievance/upload-evidence', {
+      method: 'POST',
+      body: formData
+    });
+    
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    return {
+      error: true,
+      message: 'Upload failed. Please check your connection.'
+    };
+  }
+}
+Upload UI Component:
+html<div class="evidence-upload-section">
+  <h4>Upload Evidence (Photos/Videos)</h4>
+  <div class="upload-zone" id="dropZone">
+    <div class="upload-icon">📤</div>
+    <p class="upload-text">Drag & Drop files here or click to browse</p>
+    <p class="upload-specs">
+      Supported: JPG, PNG, GIF, MP4, AVI, MOV<br>
+      <strong>Max Size: 150MB per file</strong><br>
+      Max 10 files at once
+    </p>
+    <input 
+      type="file" 
+      id="fileInput" 
+      multiple 
+      accept="image/*,video/*"
+      style="display: none;"
+    />
+    <button class="btn-primary" onclick="document.getElementById('fileInput').click()">
+      Choose Files
+    </button>
+  </div>
+  
+  <!-- File Preview Section -->
+  <div class="file-preview-container" id="filePreview">
+    <!-- Dynamically populated with uploaded files -->
+  </div>
+  
+  <!-- Upload Progress -->
+  <div class="upload-progress" id="uploadProgress" style="display: none;">
+    <h5>Uploading Files...</h5>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progressBar">
+        <div class="progress-fill" style="width: 0%"></div>
+      </div>
+      <span class="progress-text" id="progressText">0%</span>
+    </div>
+  </div>
+</div>
+
+<script>
+// File Upload Handler
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const filePreview = document.getElementById('filePreview');
+
+// Drag and Drop Events
+dropZone.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  dropZone.classList.add('drag-over');
+});
+
+dropZone.addEventListener('dragleave', () => {
+  dropZone.classList.remove('drag-over');
+});
+
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropZone.classList.remove('drag-over');
+  const files = Array.from(e.dataTransfer.files);
+  handleFiles(files);
+});
+
+fileInput.addEventListener('change', (e) => {
+  const files = Array.from(e.target.files);
+  handleFiles(files);
+});
+
+function handleFiles(files) {
+  // Validate file count
+  if (files.length > 10) {
+    alert('Maximum 10 files allowed at once');
+    return;
+  }
+  
+  // Validate each file
+  let validFiles = [];
+  for (let file of files) {
+    if (file.size > 150 * 1024 * 1024) {
+      alert(`File "${file.name}" exceeds 150MB limit`);
+      continue;
+    }
+    validFiles.push(file);
+  }
+  
+  // Display preview
+  displayFilePreview(validFiles);
+  
+  // Upload files
+  uploadFiles(validFiles);
+}
+
+function displayFilePreview(files) {
+  filePreview.innerHTML = '';
+  files.forEach((file, index) => {
+    const fileItem = document.createElement('div');
+    fileItem.className = 'file-preview-item';
+    
+    // Generate thumbnail for images
+    if (file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        fileItem.innerHTML = `
+          <img src="${e.target.result}" alt="${file.name}">
+          <p>${file.name}</p>
+          <p class="file-size">${formatFileSize(file.size)}</p>
+          <button class="btn-remove" onclick="removeFile(${index})">✕</button>
+        `;
+      };
+      reader.readAsDataURL(file);
+    } else {
+      fileItem.innerHTML = `
+        <div class="file-icon">🎥</div>
+        <p>${file.name}</p>
+        <p class="file-size">${formatFileSize(file.size)}</p>
+        <button class="btn-remove" onclick="removeFile(${index})">✕</button>
+      `;
+    }
+    
+    filePreview.appendChild(fileItem);
+  });
+}
+
+function formatFileSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(2) + ' KB';
+  return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+}
+
+async function uploadFiles(files) {
+  const uploadProgress = document.getElementById('uploadProgress');
+  const progressFill = document.querySelector('.progress-fill');
+  const progressText = document.getElementById('progressText');
+  
+  uploadProgress.style.display = 'block';
+  
+  const formData = new FormData();
+  files.forEach(file => formData.append('files', file));
+  
+  try {
+    const xhr = new XMLHttpRequest();
+    
+    // Track upload progress
+    xhr.upload.addEventListener('progress', (e) => {
+      if (e.lengthComputable) {
+        const percentComplete = (e.loaded / e.total) * 100;
+        progressFill.style.width = percentComplete + '%';
+        progressText.textContent = Math.round(percentComplete) + '%';
+      }
+    });
+    
+    xhr.addEventListener('load', () => {
+      if (xhr.status === 200) {
+        alert('Files uploaded successfully!');
+        uploadProgress.style.display = 'none';
+      } else {
+        alert('Upload failed. Please try again.');
+      }
+    });
+    
+    xhr.open('POST', '/api/grievance/upload-evidence');
+    xhr.send(formData);
+    
+  } catch (error) {
+    alert('Upload error: ' + error.message);
+    uploadProgress.style.display = 'none';
+  }
+}
+</script>
+
+9. Enhanced Description Text Area
+Updated Text Area Configuration:
+html<div class="description-section">
+  <label for="grievanceDescription">
+    Problem Description <span class="required">*</span>
+  </label>
+  <p class="field-hint">
+    Provide detailed information about your problem. Include when it started, 
+    how it affects you, and what you've already tried.
+  </p>
+  
+  <textarea 
+    id="grievanceDescription" 
+    name="description"
+    class="form-control description-textarea"
+    minlength="50" 
+    maxlength="5000"
+    rows="10"
+    placeholder="Example: The main water supply pipe in our village has been broken for 2 weeks. Around 50 families are affected. We have to travel 3km to fetch water daily. The Panchayat office was informed on Jan 1st but no action taken yet. During summer, this creates severe hardship for elderly people and children..."
+    required
+  ></textarea>
+  
+  <div class="character-counter">
+    <span id="charCount">0</span> / 5000 characters
+    <span id="charWarning" class="text-warning" style="display: none;">
+      (Minimum 50 characters required)
+    </span>
+    <span id="charSuccess" class="text-success" style="display: none;">
+      ✓ Detailed description provided
+    </span>
+  </div>
+  
+  <!-- Writing Tips -->
+  <div class="writing-tips">
+    <h5>💡 Tips for better descriptions:</h5>
+    <ul>
+      <li>✓ Mention when the problem started</li>
+      <li>✓ Describe how many people are affected</li>
+      <li>✓ List any previous complaints or actions taken</li>
+      <li>✓ Explain the impact on daily life</li>
+      <li>✓ Include specific location details if relevant</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+const textarea = document.getElementById('grievanceDescription');
+const charCount = document.getElementById('charCount');
+const charWarning = document.getElementById('charWarning');
+const charSuccess = document.getElementById('charSuccess');
+
+textarea.addEventListener('input', function() {
+  const length = this.value.length;
+  charCount.textContent = length;
+  
+  // Show warnings/success indicators
+  if (length < 50) {
+    charWarning.style.display = 'inline';
+    charSuccess.style.display = 'none';
+    textarea.classList.remove('valid');
+    textarea.classList.add('invalid');
+  } else {
+    charWarning.style.display = 'none';
+    charSuccess.style.display = 'inline';
+    textarea.classList.remove('invalid');
+    textarea.classList.add('valid');
+  }
+  
+  // Prevent exceeding max length
+  if (length >= 5000) {
+    textarea.classList.add('max-reached');
+  } else {
+    textarea.classList.remove('max-reached');
+  }
+});
+
+// Auto-expand textarea as user types
+textarea.addEventListener('input', function() {
+  this.style.height = 'auto';
+  this.style.height = (this.scrollHeight) + 'px';
+});
+</script>
+
+<style>
+.description-textarea {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  line-height: 1.6;
+  resize: vertical;
+  transition: border-color 0.3s;
+}
+
+.description-textarea:focus {
+  outline: none;
+  border-color: #1C4587;
+  box-shadow: 0 0 0 3px rgba(28, 69, 135, 0.1);
+}
+
+.description-textarea.invalid {
+  border-color: #F4511E;
+}
+
+.description-textarea.valid {
+  border-color: #2E7D32;
+}
+
+.description-textarea.max-reached {
+  border-color: #F57C00;
+  background-color: #FFF3E0;
+}
+
+.character-counter {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.writing-tips {
+  margin-top: 15px;
+  padding: 15px;
+  background: #E3F2FD;
+  border-left: 4px solid #1C4587;
+  border-radius: 4px;
+}
+
+.writing-tips h5 {
+  margin-top: 0;
+  color: #1C4587;
+  font-size: 16px;
+}
+
+.writing-tips ul {
+  margin: 10px 0 0 0;
+  padding-left: 20px;
+}
+
+.writing-tips li {
+  margin: 5px 0;
+  color: #555;
+  font-size: 14px;
+}
+</style>
+
+Final Deliverables Checklist
+✅ Grievance Submission Form with all 4 sections:
+
+Problem Title
+Category Dropdown (9 categories)
+Photo/Video Upload (Max 150MB, 10 files)
+Description (50-5000 characters) + Voice Recording
+Village Name + Contact Info (Name, Mobile, Email)
+
+✅ User Dashboard showing status-filtered grievances with timer displays
+✅ Official Dashboard with:
+
+Accept/Timer/Resolve workflow
+Can Resolve / Cannot Resolve buttons
+Escalation reason form (min 100 chars)
+10-day overdue timer per authority level
+
+✅ Community Verification Interface with:
+
+Separate User Satisfaction section (👍 Satisfied / 👎 Not Satisfied)
+Community Voting system (👍 Agree / 👎 Dispute)
+Different user IDs for original reporter vs community members
+3-4 day user inactivity trigger for community voting
+3-5 community member threshold for verification
+15-day auto-closure if no response
+Dispute evidence upload (Max 150MB)
+
+✅ Multi-Level Escalation System with:
+
+10-day timer at each authority level
+Can Resolve / Cannot Resolve decision points
+Mandatory escalation reason (min 100 chars)
+Auto-escalation after 10 days of inaction
+Escalation trail history
+Blockchain recording of all escalations
+Officer accountability tracking
+
+✅ Admin Panel (admin.html) for:
+
+Disputed grievances
+Overdue grievances
+Escalation oversight
+Officer performance metrics
+
+✅ PWA Configuration (manifest.json, service worker)
+✅ Responsive Design (mobile-first, tablet, desktop)
+✅ Color scheme aligned with government aesthetics
+✅ Accessibility features (voice, high contrast, clear typography)
+✅ API integration using fetch() for all endpoints
+
+Success Metrics
+
+Submission success rate: >95% (even with poor connectivity)
+Form completion time: <3 minutes for average user
+Community participation: >30% of users verify grievances
+Official response time: <24 hours to accept tasks
+False closure prevention: <5% disputed resolutions
+Escalation transparency: 100% blockchain-recorded escalations
+User satisfaction priority: User response overrides community votes
+Auto-closure efficiency: <10% cases reaching 15-day auto-close
+File upload success: Support for files up to 150MB
+Description quality: Average 500+ characters per submission
+
+
+Critical Implementation Notes
+Verification Logic Priority (MUST IMPLEMENT EXACTLY AS SPECIFIED):
+
+HIGHEST PRIORITY - User Response:
+
+If user clicks "👍 Satisfied" → Case CLOSED immediately (no community verification needed)
+If user clicks "👎 Not Satisfied" → Case ESCALATED to admin immediately
+
+
+SECONDARY - User Inactive (3-4 days):
+
+Only activate community voting if user hasn't responded after 3-4 days
+Require minimum 3-5 community member verifications
+Any community "Dispute" vote → Escalate immediately
+
+
+TERTIARY - Auto-Closure:
+
+If both user AND community remain inactive for 15 days post-resolution → Auto-close as "Resolved"
+
+
+
+Escalation System (MUST IMPLEMENT WITH TIMERS):
+
+10-Day Timer at Each Level:
+
+Panchayat Officer → 10 days
+Block Officer → 10 days (fresh timer)
+District Admin → 10 days (fresh timer)
+Continue up hierarchy
+
+
+Officer Actions (ONLY 2 OPTIONS):
+
+✅ Can Resolve → Continue working on grievance
+❌ Cannot Resolve → MUST provide reason (min 100 chars) + Escalate
+
+
+Auto-Escalation Triggers:
+
+If officer ignores grievance (no action after 10 days) → Auto-escalate
+Officer receives compliance notification
+Admin receives escalation alert
+Blockchain records inaction
+
+
+Genuine Reason Requirement:
+
+All escalations MUST include detailed justification
+Reasons stored in blockchain (immutable audit trail)
+Officers accountable for repeated escalations without resolution
+
+
+
+File Upload (150MB Support):
+
+Use chunked upload for large files
+Show progress bar during upload
+Compress images automatically (optional)
+Support multiple file types: JPG, PNG, GIF, MP4, AVI, MOV, MKV
+Maximum 10 files per submission
+
+Description Field (5000 Characters):
+
+Minimum: 50 characters (enforced)
+Maximum: 5000 characters (hard limit)
+Real-time character counter
+Auto-expand textarea as user types
+Provide writing tips for better descriptions
+
+
+This platform will transform village governance by making accountability transparent, automatic, and community-driven. Build with empathy for rural users—every design choice should reduce friction and increase trust. The verification and escalation systems are the heart of this platform—implement them exactly as specified to prevent false closures and ensure genuine accountability.
